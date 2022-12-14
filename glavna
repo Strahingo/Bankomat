@@ -7,11 +7,9 @@ from tkinter import font
 from turtle import Screen, bgcolor, exitonclick, screensize
 
 
+#validacija_za_login
 
-#otvaranje_novog_prozora
 
-
-#validacija_za_login 
 def login():
     sifra=entry1.get()
     if (sifra!="1234"):
@@ -44,6 +42,3 @@ def glavni_prozor():
 
 #otvaranje_svega
 glavni_prozor()
-
-
-
