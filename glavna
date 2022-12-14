@@ -6,44 +6,43 @@ from tkinter import messagebox
 from tkinter import font
 from turtle import Screen, bgcolor, exitonclick, screensize
 
-
-
-#otvaranje_novog_prozora
-
-
 #validacija_za_login 
 def login():
-    sifra=entry1.get()
-    if (sifra!="1234"):
-     messagebox.showinfo( "Pogresan pin!")
+    pin=entry1.get()
+    if (pin!="1234"):
+     messagebox.showerror(title=None, message="Pogresan pin!")
     else:
-        messagebox.showinfo( "Tacan pin!")
-
+        messagebox.showinfo( title=None, message="Tacan pin!")
+        np=Tk()
+        np.geometry("1080x720")
+        np.title("")
+        Label(np,text="Pregled stanja i transakcije",font=("Calibri",30)).place(x=415,y=30)
+        np.mainloop()
+       
 #glavni_prozor
 def glavni_prozor():
 
     screen=Tk()
     screen.geometry("1080x720")#glavni_prozor_izgled
-    screen.title("Bankomat !")
+    screen.title("Bankomat")
     
     Label(text="Dobrodosli!",font=("Calibri",30)).place(x=415,y=30)
     Label(text="Ime:",font=("Calibri",15)).place(x=390,y=100)
     Label(text="KORISNIK",font=("Calibri",15)).place(x=450,y=100)
-    Label(text="Sifra:",font=("Calibri",15)).place(x=390,y=200)
+    Label(text="PIN:",font=("Calibri",15)).place(x=390,y=200)
    
     global entry1
-    entry1=Entry(screen,bd=5)
+    entry1=Entry(screen,bd=5,show="*")
     entry1.place(x=450,y=200)
-
-    Button(screen,text="Login",command=login,height=2,width=10,bd=2).place(x=450,y=500)
+    
+    Button(screen,text="Login",command=lambda:login(),height=2,width=10,bd=2).place(x=450,y=500)
     Button(screen,text="Izlaz",command=screen.destroy,height=1,width=8,bd=2).place(x=1000,y=10)
     
     screen.mainloop()
 
-
-
 #otvaranje_svega
 glavni_prozor()
+
 
 
 
