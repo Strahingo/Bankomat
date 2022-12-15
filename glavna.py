@@ -137,8 +137,8 @@ def main_window():
     entry1.pack(pady=15)
     entry1.focus()
      
-    slika=PhotoImage(file="D:\slika",name='slicica.png')
-    Label(screen,image=img,bg='white').place(x=50,y=50)
+    slika=PhotoImage(file="D:\\slika\\slicica.png")
+    Label(mainscreen,image=slika,width=128,height=128).place(x=50,y=80)
     
     Button(mainscreen,text="Login",bg="#7FFF00",command=lambda:login(),height=2,width=10,bd=2, anchor="center",font=("Calibri",12,'bold')).pack(pady=50)
     Button(mainscreen,text="Izlaz",bg="#FF4040",command=mainscreen.destroy,height=1,width=8,bd=2,font=("Calibri",12,'bold')).pack(side=RIGHT)
