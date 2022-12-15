@@ -5,7 +5,7 @@ from tkinter import *
 from tkinter import messagebox
 from tkinter import font
 from turtle import Screen, bgcolor, exitonclick, screensize
-
+from PIL import Image,ImageTk
 
 currentFunds=10000
 newsum2 = 0
@@ -137,6 +137,8 @@ def main_window():
     entry1.pack(pady=15)
     entry1.focus()
      
+    slika=PhotoImage(file="D:\slika",name='slicica.png')
+    Label(screen,image=img,bg='white').place(x=50,y=50)
     
     Button(mainscreen,text="Login",bg="#7FFF00",command=lambda:login(),height=2,width=10,bd=2, anchor="center",font=("Calibri",12,'bold')).pack(pady=50)
     Button(mainscreen,text="Izlaz",bg="#FF4040",command=mainscreen.destroy,height=1,width=8,bd=2,font=("Calibri",12,'bold')).pack(side=RIGHT)
