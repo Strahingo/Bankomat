@@ -12,12 +12,30 @@ newsum2 = 0
 
 def subrtact(sum):
     global currentFunds
-    if currentFunds > 0:
+    if currentFunds > 0 and currentFunds>=sum:
         currentFunds-=sum
         label9.configure(text = "Trenutno stanje = " + str(currentFunds))
+        quest()
     else:
         messagebox.showerror(title=None, message="Nedovoljno sredstava!")
-    
+
+def quest():
+    global q
+    q=Tk()
+    q.geometry("500x200")
+    q.resizable(False, False)
+    q.title("")
+    Label(q,text="Da li zelite racun?",font=("Times New Roman",30,'bold'), anchor="center").pack(pady=10)
+    Button(q,text="DA",bg="#7FFF00",command=lambda:[receipt(), q.destroy()],height=1,width=10,bd=2, anchor="center",font=("Calibri",12,'bold')).pack(pady=10)
+    Button(q,text="NE",bg="#FF4040",command=q.destroy,height=1,width=8,bd=2,font=("Calibri",12,'bold')).pack(pady=5)
+
+def receipt():
+    nb=Tk()
+    nb.geometry("500x200")
+    nb.resizable(False, False)
+    nb.title("Novo stanje racuna")
+    newBalanceLabel = Label(nb,text="Novo stanje racuna je: " + str(currentFunds),font=("Times New Roman",30,'bold'), anchor="center").pack(pady=20)
+    Button(nb,text="Izlaz",bg="#FF4040",command=nb.destroy,height=1,width=8,bd=2,font=("Calibri",12,'bold')).pack(pady=25)
 
 def login():
     def closeScreen():
@@ -86,7 +104,6 @@ def login():
         global label9
         label9 = Label(nw,text="Trenutno stanje = " + str(currentFunds) ,font=("Calibri",16,'bold'),bg="#FFB90F")
         label9.grid(column=0, row=5, sticky="EW", pady=40, columnspan=2)
-        currentFunds=10000
         
 
         nw.mainloop()
@@ -111,9 +128,12 @@ def newtab():
     def subrtactnew(sum2):
         sum2 = int(newsumEntry.get())
         global currentFunds
-        if (sum2>=0):
-            currentFunds -=sum2
-        label9.configure(text = "Trenutno stanje = " + str(currentFunds))
+        if currentFunds > 0 and currentFunds>=sum2:
+            if (sum2>=0):
+                currentFunds -=sum2
+                label9.configure(text = "Trenutno stanje = " + str(currentFunds))
+        else:
+            messagebox.showerror(title=None, message="Nedovoljno sredstava!")
 
     def closeScreen():
         screen.destroy()
@@ -137,8 +157,8 @@ def main_window():
     entry1.pack(pady=15)
     entry1.focus()
      
-    slika=PhotoImage(file="D:\\slika\\slicica.png")
-    Label(mainscreen,image=slika,width=128,height=128).place(x=50,y=80)
+    slika=PhotoImage(file="slicica.png")
+    Label(mainscreen,image=slika,width=128,height=128).place(x=225,y=150)
     
     Button(mainscreen,text="Login",bg="#7FFF00",command=lambda:login(),height=2,width=10,bd=2, anchor="center",font=("Calibri",12,'bold')).pack(pady=50)
     Button(mainscreen,text="Izlaz",bg="#FF4040",command=mainscreen.destroy,height=1,width=8,bd=2,font=("Calibri",12,'bold')).pack(side=RIGHT)
