@@ -20,12 +20,15 @@ def subrtact(sum):
     
 
 def login():
+    def closeScreen():
+        mainscreen.destroy()
     global currentFunds
     pin=entry1.get()
     if (pin!="1234"):
      messagebox.showerror(title=None, message="Pogresan pin!")
     else:
         messagebox.showinfo( title=None, message="Tacan pin!")
+        closeScreen()
         nw=Tk()
         nw.geometry("1000x720")
         nw.resizable(False, False)
@@ -108,34 +111,39 @@ def newtab():
     def subrtactnew(sum2):
         sum2 = int(newsumEntry.get())
         global currentFunds
-        if (sum2>0):
+        if (sum2>=0):
             currentFunds -=sum2
         label9.configure(text = "Trenutno stanje = " + str(currentFunds))
 
-def closeScreen():
+    def closeScreen():
         screen.destroy()
 
 def main_window():
 
-    screen=Tk()
-    screen.geometry("1000x500")
-    screen.resizable(False, False)
-    screen.title("Bankomat")
+    global mainscreen
+
+    mainscreen=Tk()
+    mainscreen.geometry("1000x500")
+    mainscreen.resizable(False, False)
+    mainscreen.title("Bankomat")
 
     Label(text="Dobrodosli!",font=("Calibri",30,'bold'),anchor="center").pack(pady=40)
     Label(text="Ime: KORISNIK",font=("Calibri",15,'bold'), anchor="center").pack(pady=20)
     Label(text="PIN:",font=("Calibri",15,'bold'), anchor="center").pack(pady=15)
 
     global entry1
-    entry1=Entry(screen,bd=5,show="*")
+    entry1=Entry(mainscreen,bd=5,show="*")
     entry1.anchor("center")
     entry1.pack(pady=15)
     entry1.focus()
      
     
-    Button(screen,text="Login",bg="#7FFF00",command=lambda:login(),height=2,width=10,bd=2, anchor="center",font=("Calibri",12,'bold')).pack(pady=50)
-    Button(screen,text="Izlaz",bg="#FF4040",command=screen.destroy,height=1,width=8,bd=2,font=("Calibri",12,'bold')).pack(side=RIGHT)
-    screen.mainloop()
+    Button(mainscreen,text="Login",bg="#7FFF00",command=lambda:login(),height=2,width=10,bd=2, anchor="center",font=("Calibri",12,'bold')).pack(pady=50)
+    Button(mainscreen,text="Izlaz",bg="#FF4040",command=mainscreen.destroy,height=1,width=8,bd=2,font=("Calibri",12,'bold')).pack(side=RIGHT)
+
+
+    mainscreen.mainloop()
+
 
 main_window()
  
