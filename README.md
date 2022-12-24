@@ -1,3 +1,3 @@
 # Bankomat
 Zadatak
-Bankomat Laca Andrej i Cole
+Bankomat Laca Anta i Cole
