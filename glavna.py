@@ -120,10 +120,10 @@ def deposit():
 
 def addfunds(sum):
     global currentFunds
-    if currentFunds > 0 and currentFunds>=sum:
-        currentFunds+=sum
-        label9.configure(text = "Trenutno stanje = " + str(currentFunds))
-        quest()
+    ##if currentFunds > 0 and currentFunds>=sum:
+    currentFunds+=sum
+    label9.configure(text = "Trenutno stanje = " + str(currentFunds))
+    quest()
 
 def customsumm():
     global newsum2
@@ -146,9 +146,12 @@ def customsumm():
         sum2 = int(newsumEntry.get())
         global currentFunds
         if currentFunds > 0 and currentFunds>=sum2:
-            if (sum2>=0):
+            if sum2%500!=0:
+                messagebox.showerror(title=None, message="Suma mora biti deljiva sa 500")
+            elif (sum2>=0):
                 currentFunds +=sum2
                 label9.configure(text = "Trenutno stanje = " + str(currentFunds))
+                quest()
     def closeScreen():
         screen.destroy()
 
@@ -243,9 +246,12 @@ def customsum():
         sum2 = int(newsumEntry.get())
         global currentFunds
         if currentFunds > 0 and currentFunds>=sum2:
-            if (sum2>=0):
+            if sum2%500!=0:
+                messagebox.showerror(title=None, message="Suma mora biti deljiva sa 500")
+            elif (sum2>=0):
                 currentFunds -=sum2
                 label9.configure(text = "Trenutno stanje = " + str(currentFunds))
+                quest()
         else:
             messagebox.showerror(title=None, message="Nedovoljno sredstava!")
 
