@@ -8,7 +8,7 @@ from turtle import Screen, bgcolor, exitonclick, screensize
 from PIL import Image,ImageTk
 
 currentFunds=10000
-newsum2 = 0   
+newsum2 = 0
 
 def main_window():
 
