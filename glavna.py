@@ -6,6 +6,7 @@ from tkinter import messagebox
 from tkinter import font
 from turtle import Screen, bgcolor, exitonclick, screensize
 from PIL import Image,ImageTk
+from json import *
 
 currentFunds=10000
 newsum2 = 0
@@ -116,7 +117,9 @@ def deposit():
            
     global label9
     label9 = Label(nw,text="Trenutno stanje = " + str(currentFunds) ,font=("Calibri",16,'bold'),bg="#FFB90F")
-    label9.grid(column=0, row=5, sticky="EW", pady=40, columnspan=2)        
+    label9.grid(column=0, row=5, sticky="EW", pady=40, columnspan=2)     
+
+    
 
 def addfunds(sum):
     global currentFunds
@@ -124,6 +127,8 @@ def addfunds(sum):
     currentFunds+=sum
     label9.configure(text = "Trenutno stanje = " + str(currentFunds))
     quest()
+
+     
 
 def customsumm():
     global newsum2
@@ -257,6 +262,9 @@ def customsum():
 
     def closeScreen():
         screen.destroy()
+
+
+       
 
 def quest():
     global q
